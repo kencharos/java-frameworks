@@ -15,12 +15,16 @@
 #
 
 app:
-  greeting: "Hello"
+  sample:
+    next: http://localhost:8080/greeting
 
 server:
   port: 8080
   host: 0.0.0.0
-#  experimental:
-#    http2:
-#      enable: true
-#      max-content-length: 16384
+tracing:
+  service: "helidon-se-sample"
+  protocol: "http"
+  host: "127.0.0.1"
+  port: 9411
+  api-version: 2
+  path: "/api/v2/spans"

@@ -20,11 +20,21 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.LogManager;
 
+import javax.json.JsonObject;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+
+import org.glassfish.jersey.jackson.JacksonFeature;
+
 import io.helidon.config.Config;
 import io.helidon.health.HealthSupport;
 import io.helidon.health.checks.HealthChecks;
+import io.helidon.media.jackson.server.JacksonSupport;
 import io.helidon.media.jsonp.server.JsonSupport;
 import io.helidon.metrics.MetricsSupport;
+import io.helidon.tracing.TracerBuilder;
+import io.helidon.webclient.jaxrs.JaxRsClient;
+import io.helidon.webserver.Handler;
 import io.helidon.webserver.Routing;
 import io.helidon.webserver.ServerConfiguration;
 import io.helidon.webserver.WebServer;
@@ -63,8 +73,10 @@ public final class Main {
 
         // Get webserver config from the "server" section of application.yaml
         ServerConfiguration serverConfig =
-                ServerConfiguration.create(config.get("server"));
-
+                ServerConfiguration.builder()
+                           .config(config.get("server"))
+                           .tracer(TracerBuilder.create(config.get("tracing")))
+                           .build();
         WebServer server = WebServer.create(serverConfig, createRouting(config));
 
         // Try to start the server. If successful, print some info and arrange to
@@ -72,7 +84,7 @@ public final class Main {
         server.start()
             .thenAccept(ws -> {
                 System.out.println(
-                        "WEB server is up! http://localhost:" + ws.port() + "/greet");
+                        "WEB server is up! http://localhost:" + ws.port() + "/greeting");
                 ws.whenShutdown().thenRun(()
                     -> System.out.println("WEB server is DOWN. Good bye!"));
                 })
@@ -95,17 +107,24 @@ public final class Main {
      */
     private static Routing createRouting(Config config) {
 
+        // metrics config
         MetricsSupport metrics = MetricsSupport.create();
-        GreetService greetService = new GreetService(config);
+        // health check config
         HealthSupport health = HealthSupport.builder()
                 .addLiveness(HealthChecks.healthChecks())   // Adds a convenient set of checks
                 .build();
+        // Sample Endpoint
+        Client client = ClientBuilder.newClient().register(JacksonFeature.withExceptionMappers());
+        SampleService service = new SampleService(config, client);
+
 
         return Routing.builder()
-                .register(JsonSupport.create())
-                .register(health)                   // Health at "/health"
-                .register(metrics)                  // Metrics at "/metrics"
-                .register("/greet", greetService)
+                .register(JacksonSupport.create())
+                .register(health)  // /health endpoint
+                .register(metrics) // /metrics endpoint
+                .get("/", (req, res) -> res.send("hello"))
+                .get("/greeting", (req, res) -> res.send(service.greet()))
+                .get("/callRemote", (req, res) -> res.send(service.callOther()))
                 .build();
     }
 

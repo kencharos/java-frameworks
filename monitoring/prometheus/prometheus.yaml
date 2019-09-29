@@ -1,0 +1,24 @@
+global:
+  scrape_interval:     15s 
+  evaluation_interval: 15s 
+
+rule_files:
+#   - "/var/app/prometheus/alert.rules"
+
+scrape_configs:
+  - job_name: 'helidon-se'
+    metrics_path: /metrics
+    consul_sd_configs:
+      - server: 'host.docker.internal:8080'
+  - job_name: 'helidon-mp'
+    metrics_path: /metrics
+    consul_sd_configs:
+      - server: 'host.docker.internal:8081'
+  - job_name: 'micronaut'
+    metrics_path: /metrics
+    consul_sd_configs:
+      - server: 'host.docker.internal:8082'
+  - job_name: 'quakus'
+    metrics_path: /metrics
+    consul_sd_configs:
+      - server: 'host.docker.internal:8083'

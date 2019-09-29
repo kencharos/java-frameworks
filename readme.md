@@ -9,6 +9,7 @@ Java Frameworks
 ## pre requirement
 
 + jdk 11
+    + notice, compiler level set to jdk8
 + maven
 + gradle 
 
@@ -76,3 +77,8 @@ mvn io.quarkus:quarkus-maven-plugin:0.22.0:create \
 
 
 run on port 8083
+
+## monitoring
+
+in monitoring dir, zipkin, prometheus, grafana setup with docker.
+run `docker-compose up -d` in monitoring.
