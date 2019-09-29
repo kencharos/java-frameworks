@@ -119,13 +119,13 @@ public final class Main {
 
 
         return Routing.builder()
-                .register(JacksonSupport.create())
-                .register(health)  // /health endpoint
-                .register(metrics) // /metrics endpoint
-                .get("/", (req, res) -> res.send("hello"))
-                .get("/greeting", (req, res) -> res.send(service.greet()))
-                .get("/callRemote", (req, res) -> res.send(service.callOther()))
-                .build();
+                      .register(JacksonSupport.create())
+                      .register(health)  // /health endpoint
+                      .register(metrics) // /metrics endpoint
+                      .get("/", (req, res) -> res.send("hello"))
+                      .get("/greeting", (req, res) -> res.send(service.greet()))
+                      .get("/callRemote", (req, res) -> res.send(service.callOther()))
+                      .build();
     }
 
     /**
