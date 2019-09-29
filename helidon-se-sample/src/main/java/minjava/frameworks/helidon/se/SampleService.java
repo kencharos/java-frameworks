@@ -18,7 +18,11 @@ package minjava.frameworks.helidon.se;
 
 import javax.ws.rs.client.Client;
 
+import org.eclipse.microprofile.metrics.Counter;
+import org.eclipse.microprofile.metrics.MetricRegistry;
+
 import io.helidon.config.Config;
+import io.helidon.metrics.RegistryFactory;
 
 /**
  * Sample REST Endpoint
@@ -30,18 +34,26 @@ public class SampleService {
 
     private final Client client;
 
+    private final Counter counter;
+
     SampleService(Config config, Client client) {
 
         this.nextEndpoint = config.get("app.sample.next").asString().get();
         this.client = client;
+
+        RegistryFactory metricsRegistry = RegistryFactory.getInstance();
+        MetricRegistry appRegistry = metricsRegistry.getRegistry(MetricRegistry.Type.APPLICATION);
+        counter = appRegistry.counter("call_greeting");
     }
 
     public Greetings greet() {
-        return new Greetings(new Greeting("helidon-se", "hello"));
+
+        counter.inc(); // increment custom metrics counter;
+        return new Greetings(new Greeting("helidon-se", "hello this is helidon SE"));
     }
 
     public Greetings callOther() {
-
+        
         Greetings other = client.target(nextEndpoint)
                                 .request()
                                 .buildGet()

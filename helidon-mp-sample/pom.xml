@@ -50,6 +50,44 @@
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+
+        <!-- tracing -->
+        <dependency>
+            <groupId>io.helidon.microprofile.tracing</groupId>
+            <artifactId>helidon-microprofile-tracing</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.helidon.tracing</groupId>
+            <artifactId>helidon-tracing-zipkin</artifactId>
+        </dependency>
+
+
+        <!-- transaction and datasource for MP extension -->
+        <dependency>
+            <groupId>io.helidon.integrations.cdi</groupId>
+            <artifactId>helidon-integrations-cdi-datasource-hikaricp</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.helidon.integrations.cdi</groupId>
+            <artifactId>helidon-integrations-cdi-jta-weld</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>javax.transaction-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.199</version>
+            <scope>runtime</scope>
+        </dependency>
+
+
+
         <dependency>
             <groupId>javax.activation</groupId>
             <artifactId>javax.activation-api</artifactId>

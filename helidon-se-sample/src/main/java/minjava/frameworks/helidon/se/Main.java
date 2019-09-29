@@ -64,7 +64,7 @@ public final class Main {
      * @throws IOException if there are problems reading logging properties
      */
     static WebServer startServer() throws IOException {
-
+        long start = System.currentTimeMillis();
         // load logging configuration
         setupLogging();
 
@@ -83,8 +83,9 @@ public final class Main {
         // print a message at shutdown. If unsuccessful, print the exception.
         server.start()
             .thenAccept(ws -> {
+                long fin = System.currentTimeMillis();
                 System.out.println(
-                        "WEB server is up! http://localhost:" + ws.port() + "/greeting");
+                        "WEB server is up! http://localhost:" + ws.port() + "/greeting startup at "  +(fin-start)+" milli second" );
                 ws.whenShutdown().thenRun(()
                     -> System.out.println("WEB server is DOWN. Good bye!"));
                 })

@@ -1,0 +1,22 @@
+app:
+  greeting: 1
+
+server:
+  port: 8081
+  host: 0.0.0.0
+tracing:
+  service: "helidon-mp-sample"
+  protocol: "http"
+  host: "127.0.0.1"
+  port: 9411
+  api-version: 2
+  path: "/api/v2/spans"
+javax:
+  sql:
+    DataSource:
+      default:
+        dataSourceClassName: org.h2.jdbcx.JdbcDataSource
+        dataSource:
+          url: "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;INIT=runscript from 'classpath:/db.sql'"
+          user: sa
+          password: ""
