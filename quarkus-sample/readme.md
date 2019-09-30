@@ -20,5 +20,9 @@ mvn
 ```
 ./mvnw quarkus:add-extension -Dextension=rest-client
 ./mvnw quarkus:add-extension -Dextension=resteasy-jsonb
+./mvnw quarkus:add-extension -Dextension=metrics
+./mvnw quarkus:add-extension -Dextension=opentracing
+./mvnw quarkus:add-extension -Dextension=health
+opentracing
 
 ```
