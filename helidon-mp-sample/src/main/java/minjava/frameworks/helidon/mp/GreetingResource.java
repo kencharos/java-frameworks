@@ -33,13 +33,13 @@ import org.eclipse.microprofile.metrics.annotation.Counted;
  */
 @Path("/greeting")
 @ApplicationScoped
-public class SampleResource {
+public class GreetingResource {
 
     private final GreetingService service;
     private final int messageId;
 
     @Inject
-    public SampleResource(GreetingService service, @ConfigProperty(name = "app.greeting") int messageId) {
+    public GreetingResource(GreetingService service, @ConfigProperty(name = "app.greeting") int messageId) {
         this.service = service;
         this.messageId = messageId;
     }
@@ -50,9 +50,9 @@ public class SampleResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Counted(name="call_greeting") // custom metrics
-    public Greetings greeting() {
+    public Greeting greeting() {
         String message = service.getMessage(messageId);
-        return new Greetings(new Greeting("helidon-mp", message));
+        return new Greeting("helidon-mp", message);
     }
 
     /**

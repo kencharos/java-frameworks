@@ -6,7 +6,7 @@ import io.micronaut.http.client.annotation.Client;
 import io.reactivex.Single;
 
 @Client("${sample.next}")
-public interface SampleClient {
+public interface GreetingClient {
     @Get
-    Single<Greetings> callRemote();
+    Single<Greetings> collectGreetings();
 }

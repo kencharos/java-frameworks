@@ -118,6 +118,7 @@ one jar size: 9.5MB.
 | 256| 55MB-111MB | 13000 ms - 20000 ms  | 1.3 ms | 
 | 512 | 138 MB|  9800 ms | 1.31 ms | 
 
+
 ## quarkus
 
 v 0.22

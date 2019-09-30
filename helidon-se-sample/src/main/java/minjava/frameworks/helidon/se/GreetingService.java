@@ -28,7 +28,7 @@ import io.helidon.metrics.RegistryFactory;
  * Sample REST Endpoint
  */
 
-public class SampleService {
+public class GreetingService {
 
     private final String nextEndpoint;
 
@@ -36,7 +36,7 @@ public class SampleService {
 
     private final Counter counter;
 
-    SampleService(Config config, Client client) {
+    GreetingService(Config config, Client client) {
 
         this.nextEndpoint = config.get("app.sample.next").asString().get();
         this.client = client;
@@ -46,14 +46,14 @@ public class SampleService {
         counter = appRegistry.counter("call_greeting");
     }
 
-    public Greetings greet() {
+    public Greeting greet() {
 
         counter.inc(); // increment custom metrics counter;
-        return new Greetings(new Greeting("helidon-se", "hello this is helidon SE"));
+        return new Greeting("helidon-se", "this is helidon SE service");
     }
 
-    public Greetings callOther() {
-        
+    public Greetings collectGreetings() {
+
         Greetings other = client.target(nextEndpoint)
                                 .request()
                                 .buildGet()

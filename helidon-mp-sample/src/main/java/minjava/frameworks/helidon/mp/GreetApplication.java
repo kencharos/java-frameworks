@@ -33,6 +33,6 @@ public class GreetApplication extends Application {
 
     @Override
     public Set<Class<?>> getClasses() {
-        return CollectionsHelper.setOf(SampleResource.class);
+        return CollectionsHelper.setOf(GreetingResource.class);
     }
 }

@@ -1,34 +1,32 @@
 package minjava.frameworks.micronaut;
 
-import java.util.concurrent.Flow.Publisher;
-
 import io.micrometer.core.instrument.MeterRegistry;
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;
 import io.reactivex.Single;
 
 @Controller
-public class SampleController {
+public class GreetingController {
 
     private final MeterRegistry meterRegistry;
 
-    private final SampleClient client;
+    private final GreetingClient client;
 
-    public SampleController(MeterRegistry meterRegistry, SampleClient client) {
+    public GreetingController(MeterRegistry meterRegistry, GreetingClient client) {
         this.meterRegistry = meterRegistry;
         this.client = client;
     }
 
     @Get("/greeting")
-    public Greetings greeting() {
+    public Greeting greeting() {
         meterRegistry.counter("call_greeting").increment();
-        return new Greetings(new Greeting("micronaut-sample", "this micronaut greeting"));
+        return new Greeting("micronaut", "this is micronaut service");
     }
 
 
-    @Get("/callRemote")
-    public Single<Greetings> callRemote() {
-        return client.callRemote()
+    @Get("/greetings")
+    public Single<Greetings> collectGreeting() {
+        return client.collectGreetings()
                 .map(other -> other.add(greeting()));
 
     }

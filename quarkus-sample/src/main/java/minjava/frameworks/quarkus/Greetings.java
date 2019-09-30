@@ -1,4 +1,4 @@
-package minjava.frameworks.helidon.mp;
+package minjava.frameworks.quarkus;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,8 +27,8 @@ public class Greetings {
         return greetings;
     }
 
-    public Greetings add(Greetings g) {
-        List<Greeting> added = Stream.concat(greetings.stream(), g.greetings.stream())
+    public Greetings add(Greeting g) {
+        List<Greeting> added = Stream.concat(greetings.stream(), Stream.of(g))
               .collect(Collectors.toList());
 
         return new Greetings(added);

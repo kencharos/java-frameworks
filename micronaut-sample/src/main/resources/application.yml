@@ -26,4 +26,4 @@ tracing:
     http:
       url: http://localhost:9411
 
-sample.next: "http://localhost:8081/greeting"
+sample.next: "http://localhost:8083/greetings"

@@ -112,7 +112,7 @@ public final class Main {
                 .build();
         // Sample Endpoint
         Client client = ClientBuilder.newClient().register(JacksonFeature.withExceptionMappers());
-        SampleService service = new SampleService(config, client);
+        GreetingService service = new GreetingService(config, client);
 
 
         return Routing.builder()
@@ -121,7 +121,7 @@ public final class Main {
                       .register(metrics) // /metrics endpoint
                       .get("/", (req, res) -> res.send("hello"))
                       .get("/greeting", (req, res) -> res.send(service.greet()))
-                      .get("/callRemote", (req, res) -> res.send(service.callOther()))
+                      .get("/greetings", (req, res) -> res.send(service.collectGreetings()))
                       .build();
     }
 
