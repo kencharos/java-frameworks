@@ -4,3 +4,6 @@
 .project
 .iml
 .DS_Store
+
+ObjectStore
+PutObjectStoreDirHere
