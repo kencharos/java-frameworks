@@ -32,6 +32,17 @@ mvn archetype:generate -DinteractiveMode=false \
 run on port 8080
 
 
+#### build
+
+```
+mvn clean package
+java -jar target/helidon-se-sample.jar
+```
+
+run at 1100ms.
+
+all jar ziped size : 10.9 MB
+
 ### MP 
 
 v 1.3.0
@@ -48,6 +59,17 @@ mvn archetype:generate -DinteractiveMode=false \
 
 run on port 8081
 
+
+#### build
+
+```
+mvn clean package
+java -jar target/helidon-mp-sample.jar
+```
+
+run at 4300 ms.
+zipped app jar size: 23MB (include hikariCP extension)
+
 ## Micronaut
 
 v 1.2.3
@@ -60,8 +82,41 @@ if use IDE, set annotation processor!
 mn create-app minjava.frameworks.micronaut.micronaut-sample
 ```
 
-
 run on port 8082
+
+### build
+
+```
+./gradlew shadowJar
+java -jar build/libs/micronaut-sample-0.1-all.jar
+```
+
+run at 1800ms.
+oneJar size : 14.8 MB
+
+
+### micronaut AWS Lambda
+
+
+#### build
+
+```
+./gradlw shadowJar
+```
+
+
+upload micronaut-lambda-sample-0.1-all.jar to AWS Lambda,
+with handler name `io.micronaut.function.aws.MicronautRequestStreamHandler`
+
+
+one jar size: 9.5MB.
+
+|memory | use memory | cold | hot |
+|----|---|---|---|
+| 128| outOfMemory metaspace | - | - |
+| 192| 130MS | 20000 ms  | 1.3 ms | 
+| 256| 55MB-111MB | 13000 ms - 20000 ms  | 1.3 ms | 
+| 512 | 138 MB|  9800 ms | 1.31 ms | 
 
 ## quarkus
 

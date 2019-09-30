@@ -1,0 +1,89 @@
+plugins {
+    id "com.github.johnrengelman.shadow" version "5.0.0"
+    id "jp.classmethod.aws.lambda" version "0.39"
+    id "net.ltgt.apt-eclipse" version "0.21"
+    id "application"
+}
+
+
+
+version "0.1"
+group "micronaut.lambda.sample"
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8 // for Lambda java runtime
+
+repositories {
+    mavenCentral()
+    maven { url "https://jcenter.bintray.com" }
+}
+
+configurations {
+    // for dependencies that are needed for development only
+    developmentOnly 
+}
+
+dependencies {
+    annotationProcessor platform("io.micronaut:micronaut-bom:$micronautVersion")
+    annotationProcessor "io.micronaut:micronaut-inject-java"
+    annotationProcessor "io.micronaut:micronaut-validation"
+    implementation platform("io.micronaut:micronaut-bom:$micronautVersion")
+    implementation "io.micronaut:micronaut-inject"
+    implementation "io.micronaut:micronaut-validation"
+    implementation "io.micronaut:micronaut-runtime"
+    implementation "io.micronaut:micronaut-function-aws"
+    implementation "javax.annotation:javax.annotation-api"
+    runtimeOnly "com.amazonaws:aws-lambda-java-log4j2:1.0.0"
+    runtimeOnly "org.apache.logging.log4j:log4j-slf4j-impl:2.9.1"
+    testAnnotationProcessor platform("io.micronaut:micronaut-bom:$micronautVersion")
+    testAnnotationProcessor "io.micronaut:micronaut-inject-java"
+    testImplementation platform("io.micronaut:micronaut-bom:$micronautVersion")
+    testImplementation "org.junit.jupiter:junit-jupiter-api"
+    testImplementation "io.micronaut.test:micronaut-test-junit5"
+    testImplementation "io.micronaut:micronaut-function-client"
+    testImplementation "io.micronaut:micronaut-inject-java"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine"
+    testRuntimeOnly "io.micronaut:micronaut-http-server-netty"
+    testRuntimeOnly "io.micronaut:micronaut-function-web"
+}
+
+test.classpath += configurations.developmentOnly
+shadowJar {
+    transform(com.github.jengelman.gradle.plugins.shadow.transformers.Log4j2PluginsCacheFileTransformer)
+}
+// use JUnit 5 platform
+test {
+    useJUnitPlatform()
+}
+tasks.withType(JavaCompile){
+    options.encoding = "UTF-8"
+    options.compilerArgs.add('-parameters')
+}
+
+shadowJar {
+    mergeServiceFiles()
+}
+
+run.classpath += configurations.developmentOnly
+run.jvmArgs('-noverify', '-XX:TieredStopAtLevel=1', '-Dcom.sun.management.jmxremote')
+mainClassName = "micronaut.lambda.sample.MicronautLambdaSampleFunction"
+applicationDefaultJvmArgs = [""]
+
+jar {
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+}
+
+if(new File("${System.getProperty("user.home")}/.aws/credentials").exists()) {
+    task deploy(type: jp.classmethod.aws.gradle.lambda.AWSLambdaMigrateFunctionTask, dependsOn: shadowJar) {
+        functionName = "micronaut-lambda-sample"
+        handler = "micronaut.lambda.sample.MicronautLambdaSampleFunction::apply"
+        role = "arn:aws:iam::${aws.accountId}:role/lambda_basic_execution"
+        runtime = com.amazonaws.services.lambda.model.Runtime.Java8
+        zipFile = shadowJar.archivePath
+        memorySize = 192
+        timeout = 60
+    }
+
+}

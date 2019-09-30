@@ -1,4 +1,4 @@
-package minjava.frameworks.micronaut;
+package micronaut.lambda.sample;
 
 import io.micronaut.runtime.Micronaut;
 
