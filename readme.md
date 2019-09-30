@@ -50,9 +50,11 @@ run on port 8081
 
 ## Micronaut
 
-v 1.2.2
+v 1.2.3
 
 use micronaut-cli (mn) 
+
+if use IDE, set annotation processor!
 
 ```bash
 mn create-app minjava.frameworks.micronaut.micronaut-sample

@@ -15,7 +15,7 @@ scrape_configs:
     static_configs:
     - targets: ['host.docker.internal:8081']
   - job_name: 'micronaut'
-    metrics_path: /metrics
+    metrics_path: /prometheus
     static_configs:
     - targets: ['host.docker.internal:8082']
   - job_name: 'quakus'

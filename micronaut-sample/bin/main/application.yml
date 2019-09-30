@@ -3,3 +3,19 @@ micronaut:
     name: micronaut-sample
   server:
     port: 8082
+# health, metrics(prometheus)
+endpoints:
+  health:
+    enabled: true
+    sensitive: false
+    details-visible: ANONYMOUS
+  metrics:
+    enabled: true
+    export:
+      prometheus:
+        enabled: true
+        step: PT1M
+        descriptions: true
+  prometheus:
+    enabled: true
+    sensitive: false
