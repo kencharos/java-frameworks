@@ -2,12 +2,21 @@ package minjava.frameworks.micronaut;
 
 public class Greeting {
 
-    private final String name;
-    private final String message;
+    private String name;
+    private String message;
 
+    public Greeting(){}
 
     public Greeting(String name, String message) {
         this.name = name;
+        this.message = message;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setMessage(String message) {
         this.message = message;
     }
 

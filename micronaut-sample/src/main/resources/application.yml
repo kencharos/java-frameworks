@@ -19,3 +19,11 @@ endpoints:
   prometheus:
     enabled: true
     sensitive: false
+
+tracing:
+  zipkin:
+    enabled: true
+    http:
+      url: http://localhost:9411
+
+sample.next: "http://localhost:8081/greeting"

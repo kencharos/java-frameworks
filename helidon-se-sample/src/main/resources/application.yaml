@@ -16,7 +16,7 @@
 
 app:
   sample:
-    next: http://localhost:8080/greeting
+    next: http://localhost:8082/callRemote
 
 server:
   port: 8080

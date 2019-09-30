@@ -34,9 +34,16 @@ dependencies {
     implementation "io.micronaut:micronaut-http-server-netty"
     implementation "io.micronaut:micronaut-http-client"
 
+    // health, metrics
     compile "io.micronaut:micronaut-management"
     compile "io.micronaut.configuration:micronaut-micrometer-core"
     compile "io.micronaut.configuration:micronaut-micrometer-registry-prometheus"
+
+    // tracing
+    compile 'io.micronaut:micronaut-tracing'
+    runtime 'io.zipkin.brave:brave-instrumentation-http'
+    runtime 'io.zipkin.reporter2:zipkin-reporter'
+    compile 'io.opentracing.brave:brave-opentracing'
 
     runtimeOnly "ch.qos.logback:logback-classic:1.2.3"
     testAnnotationProcessor platform("io.micronaut:micronaut-bom:$micronautVersion")

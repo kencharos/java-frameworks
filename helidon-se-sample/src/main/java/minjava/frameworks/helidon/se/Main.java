@@ -20,7 +20,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.LogManager;
 
-import javax.json.JsonObject;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 
@@ -30,11 +29,8 @@ import io.helidon.config.Config;
 import io.helidon.health.HealthSupport;
 import io.helidon.health.checks.HealthChecks;
 import io.helidon.media.jackson.server.JacksonSupport;
-import io.helidon.media.jsonp.server.JsonSupport;
 import io.helidon.metrics.MetricsSupport;
 import io.helidon.tracing.TracerBuilder;
-import io.helidon.webclient.jaxrs.JaxRsClient;
-import io.helidon.webserver.Handler;
 import io.helidon.webserver.Routing;
 import io.helidon.webserver.ServerConfiguration;
 import io.helidon.webserver.WebServer;
