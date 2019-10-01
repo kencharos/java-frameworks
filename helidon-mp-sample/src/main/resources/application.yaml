@@ -8,9 +8,8 @@ tracing:
   service: "helidon-mp-sample"
   protocol: "http"
   host: "127.0.0.1"
-  port: 9411
-  api-version: 2
-  path: "/api/v2/spans"
+  port: 14268
+  path: "/api/traces"
 javax:
   sql:
     DataSource:

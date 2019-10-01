@@ -21,9 +21,7 @@ endpoints:
     sensitive: false
 
 tracing:
-  zipkin:
+  jaeger:
     enabled: true
-    http:
-      url: http://localhost:9411
 
 sample.next: "http://localhost:8083/greetings"
