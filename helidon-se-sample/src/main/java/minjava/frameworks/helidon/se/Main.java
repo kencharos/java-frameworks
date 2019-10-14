@@ -112,16 +112,15 @@ public final class Main {
                 .build();
         // Sample Endpoint
         Client client = ClientBuilder.newClient().register(JacksonFeature.withExceptionMappers());
-        GreetingService service = new GreetingService(config, client);
-
+        GreetingResource resource = new GreetingResource(config, client);
 
         return Routing.builder()
                       .register(JacksonSupport.create())
                       .register(health)  // /health endpoint
                       .register(metrics) // /metrics endpoint
                       .get("/", (req, res) -> res.send("hello"))
-                      .get("/greeting", (req, res) -> res.send(service.greet()))
-                      .get("/greetings", (req, res) -> res.send(service.collectGreetings()))
+                      .get("/greeting", (req, res) -> res.send(resource.greet()))
+                      .get("/greetings", (req, res) -> res.send(resource.collectGreetings()))
                       .build();
     }
 
