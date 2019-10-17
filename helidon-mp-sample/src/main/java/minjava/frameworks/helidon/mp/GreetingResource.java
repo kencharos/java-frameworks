@@ -36,12 +36,12 @@ import org.eclipse.microprofile.metrics.annotation.Counted;
 public class GreetingResource {
 
     private final GreetingService service;
-    private final int messageId;
+    private final int greetingId;
 
     @Inject
-    public GreetingResource(GreetingService service, @ConfigProperty(name = "app.greeting") int messageId) {
+    public GreetingResource(GreetingService service, @ConfigProperty(name = "greeting.id") int greetingId) {
         this.service = service;
-        this.messageId = messageId;
+        this.greetingId = greetingId;
     }
 
     /**
@@ -51,7 +51,7 @@ public class GreetingResource {
     @Produces(MediaType.APPLICATION_JSON)
     @Counted(name="call_greeting") // custom metrics
     public Greeting greeting() {
-        String message = service.getMessage(messageId);
+        String message = service.getMessage(greetingId);
         return new Greeting("helidon-mp", message);
     }
 
@@ -62,6 +62,6 @@ public class GreetingResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public void updateMessage(GreetUpdate body) {
 
-        service.updateMessage(body.getId(), body.getMessage());
+        service.updateMessage(greetingId, body.getMessage());
     }
 }
