@@ -71,6 +71,14 @@ java -jar target/helidon-mp-sample.jar
 run at 4300 ms.
 zipped app jar size: 23MB (include hikariCP extension)
 
+NOTE: CDI拡張を抜いた場合
+
+run at 3500 ms.
+zipped app jar size: 21.4 MB.
+
+CDIの初期化がやはり重め。
+
+
 ## Micronaut
 
 v 1.2.3
