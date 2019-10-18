@@ -217,6 +217,20 @@ docker run -p 8083:8083 qurkussample
 43.5MB
 run at 0.012 
 
+## spring boot 2.2
+
+比較として。Micronautと同構成となる、 
+ReactiveWeb, prometheus, 分散トレーシング(sleuth+zipkin)、HTTPクライアントを構築。
+
+Jar size: 30MB
+run at 5000ms
+
+### set lazy-initialize
+
+lazy-initializeを設定してみたがほぼ変わらず。
+規模が大きくならないと効いてこない。
+
+
 ## monitoring
 
 in monitoring dir, zipkin, prometheus, grafana setup with docker.

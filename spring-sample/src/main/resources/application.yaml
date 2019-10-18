@@ -1,0 +1,18 @@
+server:
+  port: 8085
+  main:
+    lazy-initialization: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - prometheus
+          - health
+          - info
+  endpoint:
+    prometheus:
+      enabled: true
+
+next:
+  endpoint: http://localhost:8085
