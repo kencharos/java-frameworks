@@ -230,6 +230,12 @@ run at 5000ms
 lazy-initializeを設定してみたがほぼ変わらず。
 規模が大きくならないと効いてこない。
 
+### Spring Cloudを抜く
+
+SpringCloudSleuthを削除した場合、
+
+Jar size: 21MB
+run at 2800ms
 
 ## monitoring
 
