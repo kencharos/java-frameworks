@@ -24,4 +24,4 @@ tracing:
   jaeger:
     enabled: true
 
-sample.next: "http://localhost:8083"
+sample.next: "http://localhost:8083/greetings"
