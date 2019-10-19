@@ -7,6 +7,10 @@ import io.reactivex.Single;
 
 @Client("${sample.next}")
 public interface GreetingClient {
-    @Get
-    Single<Greetings> collectGreetings();
+
+    @Get("/greeting")
+    Greetings collectGreetings();
+
+    @Get("/greeting")
+    Single<Greetings> collectGreetingsRx();
 }

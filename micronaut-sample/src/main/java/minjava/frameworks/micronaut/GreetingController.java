@@ -23,13 +23,18 @@ public class GreetingController {
         return new Greeting("micronaut", "this is micronaut service");
     }
 
-
     @Get("/greetings")
-    public Single<Greetings> collectGreeting() {
-        return client.collectGreetings()
-                .map(other -> other.add(greeting()));
+    public Greetings collectGreeting() {
+        Greetings other =  client.collectGreetings();
+        return other.add(greeting());
 
     }
 
+    @Get("/greetingsRx")
+    public Single<Greetings> collectGreetingRx() {
+        return client.collectGreetingsRx()
+                     .map(other -> other.add(greeting()));
+
+    }
 
 }
