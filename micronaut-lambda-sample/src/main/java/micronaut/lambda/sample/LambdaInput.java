@@ -1,8 +1,5 @@
 package micronaut.lambda.sample;
 
-import io.micronaut.core.annotation.*;
-
-@Introspected
 public class LambdaInput {
 
     private String name;

@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: spring-sample
+  zipkin:
+    base-url: http://127.0.0.1:9411
+

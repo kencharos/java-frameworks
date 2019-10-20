@@ -106,6 +106,9 @@ oneJar size : 14.8 MB
 
 ### micronaut AWS Lambda
 
+```bash
+mn create-function minjava.frameworks.micronaut.micronaut-lambda-sample
+```
 
 #### build
 
