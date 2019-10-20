@@ -136,11 +136,11 @@ one jar size: 9.5MB.
 v 0.23.1
 
 ```bash
-mvn io.quarkus:quarkus-maven-plugin:0.22.0:create \
+mvn io.quarkus:quarkus-maven-plugin:0.23.1:create \
     -DprojectGroupId=minjava.frameworks \
     -DprojectArtifactId=quarkus-sample \
-    -DclassName="minjava.frameworks.quarkus.HelloResources" \
-    -Dpath="/hello"
+    -DclassName="minjava.frameworks.quarkus.GreetingResources" \
+    -Dpath="/greeting"
 ```
 
 `./mvnw compile quarkus:dev`

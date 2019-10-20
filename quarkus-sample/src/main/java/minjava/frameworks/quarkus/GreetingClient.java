@@ -23,5 +23,4 @@ public interface GreetingClient {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     CompletionStage<Greeting> fetchGreetingAsync();
-
 }
