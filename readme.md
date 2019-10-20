@@ -166,7 +166,7 @@ set upg graalvm native image.
 
 + install graalvm
 + set JAVA_HOME, GRAALVM_HOME
-+ add native-image `gu install native-image`
++ add native-image by `gu install native-image`
 
 ```
 ./mvnw clean -P native package

@@ -14,6 +14,6 @@ public class GreetingResources {
     @Produces(MediaType.APPLICATION_JSON)
     @Counted(name = "call_greeting")
     public Greeting greet() {
-        return new Greeting("quarkus", "this is jijijijijiji 89898989");
+        return new Greeting("quarkus", "this is Quarkus sample");
     }
 }

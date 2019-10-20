@@ -16,7 +16,7 @@ public class GreetingsResources {
 
     @Inject
     @RestClient
-    private GreetingClient client;
+    GreetingClient client;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
