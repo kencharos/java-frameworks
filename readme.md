@@ -133,10 +133,10 @@ one jar size: 9.5MB.
 
 ## quarkus
 
-v 0.23.1
+v 0.23.1 -> v 1.0.0.Final
 
 ```bash
-mvn io.quarkus:quarkus-maven-plugin:0.23.1:create \
+mvn io.quarkus:quarkus-maven-plugin:1.0.0.Final:create \
     -DprojectGroupId=minjava.frameworks \
     -DprojectArtifactId=quarkus-sample \
     -DclassName="minjava.frameworks.quarkus.GreetingResources" \
@@ -164,7 +164,7 @@ jar all size 15.5MB
 
 set upg graalvm native image.
 
-+ install graalvm
++ install graalvm (19.2.1 is Ok in 1.0.0 Final)
 + set JAVA_HOME, GRAALVM_HOME
 + add native-image by `gu install native-image`
 
@@ -176,33 +176,31 @@ set upg graalvm native image.
 logs 
 
 ```
-[INFO] [io.quarkus.creator.phase.nativeimage.NativeImagePhase] Running Quarkus native-image plugin on OpenJDK 64-Bit Server VM
-[INFO] [io.quarkus.creator.phase.nativeimage.NativeImagePhase] /Users/--/.sdkman/candidates/java/19.2.0.1-grl/bin/native-image -J-Dsun.nio.ch.maxUpdateArraySize=100 -J-Djava.util.logging.manager=org.jboss.logmanager.LogManager -J-Dvertx.logger-delegate-factory-class-name=io.quarkus.vertx.core.runtime.VertxLogDelegateFactory -J-Dio.netty.noUnsafe=true -J-Dio.netty.leakDetection.level=DISABLED -J-Dvertx.disableDnsResolver=true --initialize-at-build-time= -H:InitialCollectionPolicy=com.oracle.svm.core.genscavenge.CollectionPolicy$BySpaceAndTime -jar quarkus-sample-1.0-SNAPSHOT-runner.jar -J-Djava.util.concurrent.ForkJoinPool.common.parallelism=1 -H:FallbackThreshold=0 -H:+ReportExceptionStackTraces -H:+PrintAnalysisCallTree -H:-AddAllCharsets -H:EnableURLProtocols=http,https --enable-all-security-services -H:+JNI --no-server -H:-UseServiceLoaderFeature -H:+StackTrace
-[quarkus-sample-1.0-SNAPSHOT-runner:5530]    classlist:   9,468.41 ms
-[quarkus-sample-1.0-SNAPSHOT-runner:5530]        (cap):   3,552.72 ms
-[quarkus-sample-1.0-SNAPSHOT-runner:5530]        setup:   5,948.83 ms
-14:23:37,293 INFO  [org.jbo.threads] JBoss Threads version 3.0.0.Final
-[quarkus-sample-1.0-SNAPSHOT-runner:5530]   (typeflow):  40,134.34 ms
-[quarkus-sample-1.0-SNAPSHOT-runner:5530]    (objects):  20,866.10 ms
-[quarkus-sample-1.0-SNAPSHOT-runner:5530]   (features):   1,115.80 ms
-[quarkus-sample-1.0-SNAPSHOT-runner:5530]     analysis:  64,738.23 ms
-Printing call tree to /--/java-frameworks/quarkus-sample/target/reports/call_tree_quarkus-sample-1.0-SNAPSHOT-runner_20191001_142454.txt
-Printing list of used classes to /--/java-frameworks/quarkus-sample/target/reports/used_classes_quarkus-sample-1.0-SNAPSHOT-runner_20191001_142458.txt
-Printing list of used packages to /--/java-frameworks/quarkus-sample/target/reports/used_packages_quarkus-sample-1.0-SNAPSHOT-runner_20191001_142458.txt
-[quarkus-sample-1.0-SNAPSHOT-runner:5530]     (clinit):     876.25 ms
-[quarkus-sample-1.0-SNAPSHOT-runner:5530]     universe:   2,825.18 ms
-[quarkus-sample-1.0-SNAPSHOT-runner:5530]      (parse):   6,398.34 ms
-[quarkus-sample-1.0-SNAPSHOT-runner:5530]     (inline):   9,834.44 ms
-[quarkus-sample-1.0-SNAPSHOT-runner:5530]    (compile): 110,642.99 ms
-[quarkus-sample-1.0-SNAPSHOT-runner:5530]      compile: 137,298.65 ms
-[quarkus-sample-1.0-SNAPSHOT-runner:5530]        image:   9,858.41 ms
-[quarkus-sample-1.0-SNAPSHOT-runner:5530]        write:   2,038.06 ms
-[quarkus-sample-1.0-SNAPSHOT-runner:5530]      [total]: 252,634.41 ms
+[INFO] [io.quarkus.deployment.pkg.steps.NativeImageBuildStep] Running Quarkus native-image plugin on OpenJDK 64-Bit Server VM
+[INFO] [io.quarkus.deployment.pkg.steps.NativeImageBuildStep] /Users/--/.sdkman/candidates/java/19.2.1-grl/bin/native-image -J-Dsun.nio.ch.maxUpdateArraySize=100 -J-Djava.util.logging.manager=org.jboss.logmanager.LogManager -J-Dvertx.logger-delegate-factory-class-name=io.quarkus.vertx.core.runtime.VertxLogDelegateFactory -J-Dvertx.disableDnsResolver=true -J-Dio.netty.leakDetection.level=DISABLED -J-Dio.netty.allocator.maxOrder=1 --initialize-at-build-time= -H:InitialCollectionPolicy=com.oracle.svm.core.genscavenge.CollectionPolicy$BySpaceAndTime -jar quarkus-sample-1.0-SNAPSHOT-runner.jar -J-Djava.util.concurrent.ForkJoinPool.common.parallelism=1 -H:FallbackThreshold=0 -H:+ReportExceptionStackTraces -H:-AddAllCharsets -H:EnableURLProtocols=http,https --enable-all-security-services -H:+JNI --no-server -H:-UseServiceLoaderFeature -H:+StackTrace quarkus-sample-1.0-SNAPSHOT-runner
+[quarkus-sample-1.0-SNAPSHOT-runner:48656]    classlist:   7,954.60 ms
+[quarkus-sample-1.0-SNAPSHOT-runner:48656]        (cap):   3,359.94 ms
+[quarkus-sample-1.0-SNAPSHOT-runner:48656]        setup:   5,133.19 ms
+04:14:59,253 INFO  [org.jbo.threads] JBoss Threads version 3.0.0.Final
+[quarkus-sample-1.0-SNAPSHOT-runner:48656]   (typeflow):  27,480.22 ms
+[quarkus-sample-1.0-SNAPSHOT-runner:48656]    (objects):  15,754.88 ms
+[quarkus-sample-1.0-SNAPSHOT-runner:48656]   (features):     829.36 ms
+[quarkus-sample-1.0-SNAPSHOT-runner:48656]     analysis:  46,038.16 ms
+[quarkus-sample-1.0-SNAPSHOT-runner:48656]     (clinit):     911.21 ms
+[quarkus-sample-1.0-SNAPSHOT-runner:48656]     universe:   2,412.26 ms
+[quarkus-sample-1.0-SNAPSHOT-runner:48656]      (parse):   5,162.33 ms
+[quarkus-sample-1.0-SNAPSHOT-runner:48656]     (inline):  10,605.25 ms
+[quarkus-sample-1.0-SNAPSHOT-runner:48656]    (compile):  42,685.36 ms
+[quarkus-sample-1.0-SNAPSHOT-runner:48656]      compile:  60,694.33 ms
+[quarkus-sample-1.0-SNAPSHOT-runner:48656]        image:   2,967.48 ms
+[quarkus-sample-1.0-SNAPSHOT-runner:48656]        write:   1,100.40 ms
+[quarkus-sample-1.0-SNAPSHOT-runner:48656]      [total]: 127,191.63 ms
+[INFO] [io.quarkus.deployment.QuarkusAugmentor] Quarkus augmentation completed in 130947ms
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  04:25 min
-[INFO] Finished at: 2019-10-01T14:27:32+09:00
+[INFO] Total time:  02:24 min
+[INFO] Finished at: 2019-11-27T04:16:51+09:00
 [INFO] ------------------------------------------------------------------------
 
 ```
@@ -210,7 +208,7 @@ Printing list of used packages to /--/java-frameworks/quarkus-sample/target/repo
 ### native (with Docker)
 
 ```bash
-mvn package -Pnative -Dnative-image.docker-build=true
+./mvnw package -Pnative -Dquarkus.native.container-build=true
 # generate target/quarkus-sample-1.0-SNAPSHOT-runner
 # pack docker
 docker build -t qurkussample -f Dockerfile.native .
@@ -219,6 +217,14 @@ docker run -p 8083:8083 qurkussample
 
 43.5MB
 run at 0.012 
+
+### changes in 1.0.0
+
++ pom.xml, dockerfile
++ extension install "opentracing" -> "smallrye-opentracing"
++ annotaion "@SubtractTest" -> "@NativeImageTest"
++ graalVM version "19.1" -> "19.2"
++ docker build option, `-Dnative-image.docker-build=true` -> `-Dquarkus.native.container-build=true`
 
 ## spring boot 2.2
 

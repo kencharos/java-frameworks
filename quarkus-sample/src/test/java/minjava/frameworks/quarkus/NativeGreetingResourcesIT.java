@@ -1,10 +1,10 @@
 package minjava.frameworks.quarkus;
 
 
-import io.quarkus.test.junit.SubstrateTest;
+import io.quarkus.test.junit.NativeImageTest;
 
-// ./mvnw package -Pnative for test with native
-@SubstrateTest
+// ./mvnw verify -Pnative for test with native
+@NativeImageTest
 public class NativeGreetingResourcesIT extends GreetingResourcesTest {
 
 }
