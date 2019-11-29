@@ -25,9 +25,9 @@ spec:
   selector:
     app: helidon-se-sample
   ports:
-  - port: 8080
-    targetPort: 8080
-    name: http
+    - port: 8080
+      targetPort: 8080
+      name: http
 ---
 kind: Deployment
 apiVersion: extensions/v1beta1
@@ -42,9 +42,9 @@ spec:
         version: v1
     spec:
       containers:
-      - name: helidon-se-sample
-        image: helidon-se-sample
-        imagePullPolicy: IfNotPresent
-        ports:
-        - containerPort: 8080
+        - name: helidon-se-sample
+          image: helidon-se-sample
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
 ---

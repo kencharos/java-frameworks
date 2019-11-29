@@ -8,7 +8,7 @@ Java Frameworks
 
 ## pre requirement
 
-+ jdk 11
++ jdk 11 (11.0.5.hs-adpt )
     + notice, compiler level set to jdk8
 + maven
 + gradle 
@@ -17,13 +17,13 @@ Java Frameworks
 
 ### SE 
 
-v 1.3.0
+v 1.3.0 -> v 1.4.0
 
 ```bash
 mvn archetype:generate -DinteractiveMode=false \
     -DarchetypeGroupId=io.helidon.archetypes \
     -DarchetypeArtifactId=helidon-quickstart-se \
-    -DarchetypeVersion=1.3.0 \
+    -DarchetypeVersion=1.4.0 \
     -DgroupId=minjava.frameworks \
     -DartifactId=helidon-se-sample \
     -Dpackage=minjava.frameworks.helidon.se
@@ -39,20 +39,24 @@ mvn clean package
 java -jar target/helidon-se-sample.jar
 ```
 
-run at 1100ms.
+run at 1236ms.
 
-all jar ziped size : 10.9 MB
+all jar ziped size : 12.9 MB
 
+#### changes 1.4.0
+
+metrics -> metrics2.
+spinup 1100ms -> 1236ms
 
 ### MP 
 
-v 1.3.0
+v 1.3.0 -> 1.4.0
 
 ```bash
 mvn archetype:generate -DinteractiveMode=false \
     -DarchetypeGroupId=io.helidon.archetypes \
     -DarchetypeArtifactId=helidon-quickstart-mp \
-    -DarchetypeVersion=1.3.0 \
+    -DarchetypeVersion=1.4.0 \
     -DgroupId=minjava.frameworks \
     -DartifactId=helidon-mp-sample \
     -Dpackage=minjava.frameworks.helidon.mp
@@ -68,13 +72,13 @@ mvn clean package
 java -jar target/helidon-mp-sample.jar
 ```
 
-run at 4300 ms.
-zipped app jar size: 23MB (include hikariCP extension)
+run at 3613 ms.
+zipped app jar size: 24.1MB (include hikariCP extension)
 
 NOTE: CDI拡張を抜いた場合
 
-run at 3500 ms.
-zipped app jar size: 21.4 MB.
+run at 3160 ms.
+zipped app jar size: 21.5 MB.
 
 CDIの初期化がやはり重め。
 
@@ -156,8 +160,8 @@ JVM
  java -jar target/quarkus-sample-1.0-SNAPSHOT-runner.jar 
 ```
 
-run on 1.2s
-jar all size 15.5MB
+run on 1.2s ->  0.932s.
+jar all size 13MB
 
 
 ### native (with graalVM local)
@@ -215,16 +219,17 @@ docker build -t qurkussample -f Dockerfile.native .
 docker run -p 8083:8083 qurkussample
 ```
 
-43.5MB
+42.5MB
 run at 0.012 
 
-### changes in 1.0.0
+### changes in 1.0.1
 
 + pom.xml, dockerfile
 + extension install "opentracing" -> "smallrye-opentracing"
 + annotaion "@SubtractTest" -> "@NativeImageTest"
 + graalVM version "19.1" -> "19.2"
 + docker build option, `-Dnative-image.docker-build=true` -> `-Dquarkus.native.container-build=true`
+
 
 ## spring boot 2.2
 
