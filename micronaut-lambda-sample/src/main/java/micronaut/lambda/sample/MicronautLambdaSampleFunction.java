@@ -15,7 +15,7 @@ public class MicronautLambdaSampleFunction
 
     @Override
     public LambdaOutput apply(LambdaInput input) {
-        return new LambdaOutput(service.greet(input.getName()));
+        var result = service.greet(input.getName());
+        return new LambdaOutput(result);
     }
 }
-

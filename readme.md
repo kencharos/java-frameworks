@@ -85,7 +85,7 @@ CDIの初期化がやはり重め。
 
 ## Micronaut
 
-v 1.2.3
+v 1.2.3 -> v1.2.6
 
 use micronaut-cli (mn) 
 
@@ -104,8 +104,8 @@ run on port 8082
 java -jar build/libs/micronaut-sample-0.1-all.jar
 ```
 
-run at 1800ms.
-oneJar size : 14.8 MB
+run at 1740ms.
+oneJar size : 16.2 MB
 
 
 ### micronaut AWS Lambda
@@ -113,6 +113,8 @@ oneJar size : 14.8 MB
 ```bash
 mn create-function minjava.frameworks.micronaut.micronaut-lambda-sample
 ```
+
+fix micronaut-aws version 1.3.3 for running AWS Lambda java 11 runtime.
 
 #### build
 
@@ -130,9 +132,9 @@ one jar size: 9.5MB.
 |memory | use memory | cold | hot |
 |----|---|---|---|
 | 128| outOfMemory metaspace | - | - |
-| 192| 130MS | 20000 ms  | 1.3 ms | 
-| 256| 55MB-111MB | 13000 ms - 20000 ms  | 1.3 ms | 
-| 512 | 138 MB|  9800 ms | 1.31 ms | 
+| 192| 153MB | 20247 ms  | 1.95 ms | 
+| 256| 154MB | 14600 ms  | 1.80 ms | 
+| 512 | 131 MB|  7000 ms | 1.80 ms | 
 
 
 ## quarkus
