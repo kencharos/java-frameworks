@@ -2,7 +2,7 @@ greeting:
   id: 1
 
 server:
-  port: 8081
+  port: 8083
   host: 0.0.0.0
 tracing:
   service: "helidon-mp-sample"

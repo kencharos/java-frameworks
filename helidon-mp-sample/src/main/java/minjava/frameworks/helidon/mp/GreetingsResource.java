@@ -18,50 +18,34 @@ package minjava.frameworks.helidon.mp;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import org.eclipse.microprofile.config.inject.ConfigProperty;
-import org.eclipse.microprofile.metrics.annotation.Counted;
 
-/**
- * Sample Endpoing get and post
- */
-@Path("/greeting")
+@Path("/greetings")
 @ApplicationScoped
-public class GreetingResource {
+public class GreetingsResource {
 
     private final GreetingService service;
     private final int greetingId;
 
     @Inject
-    public GreetingResource(GreetingService service, @ConfigProperty(name = "greeting.id") int greetingId) {
+    public GreetingsResource(GreetingService service, @ConfigProperty(name = "greeting.id") int greetingId) {
         this.service = service;
         this.greetingId = greetingId;
     }
 
     /**
-     * curl http://localhost:8083/greeting
+     * curl http://localhost:8083/greetings
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Counted(name="call_greeting") // custom metrics
-    public Greeting greeting() {
+    public Greetings greeting() {
         String message = service.getMessage(greetingId);
-        return new Greeting("helidon-mp", message);
+        return new Greetings(new Greeting("helidon-mp", message));
     }
 
-    /**
-     * curl -X POST http://localhost:8083/greeting -H "content-type: application/json" -d '{"id":1, "message":"<your preffer>"}'
-     */
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void updateMessage(GreetUpdate body) {
-
-        service.updateMessage(greetingId, body.getMessage());
-    }
 }

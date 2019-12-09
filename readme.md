@@ -1,10 +1,10 @@
 Java Frameworks
 ---------------
 
-+ Helidon SE
-+ Helidon MP
-+ Micronaut
-+ quarkus
++ Micronaut (run on 8080 port)
++ quarkus   (run on 8081 port)
++ Helidon SE (run on 8082 port)
++ Helidon MP (run on 8083 port)
 
 ## pre requirement
 
@@ -13,74 +13,6 @@ Java Frameworks
 + maven
 + gradle 
 
-## helidon
-
-### SE 
-
-v 1.3.0 -> v 1.4.0
-
-```bash
-mvn archetype:generate -DinteractiveMode=false \
-    -DarchetypeGroupId=io.helidon.archetypes \
-    -DarchetypeArtifactId=helidon-quickstart-se \
-    -DarchetypeVersion=1.4.0 \
-    -DgroupId=minjava.frameworks \
-    -DartifactId=helidon-se-sample \
-    -Dpackage=minjava.frameworks.helidon.se
-```
-
-run on port 8080
-
-
-#### build
-
-```
-mvn clean package
-java -jar target/helidon-se-sample.jar
-```
-
-run at 1236ms.
-
-all jar ziped size : 12.9 MB
-
-#### changes 1.4.0
-
-metrics -> metrics2.
-spinup 1100ms -> 1236ms
-
-### MP 
-
-v 1.3.0 -> 1.4.0
-
-```bash
-mvn archetype:generate -DinteractiveMode=false \
-    -DarchetypeGroupId=io.helidon.archetypes \
-    -DarchetypeArtifactId=helidon-quickstart-mp \
-    -DarchetypeVersion=1.4.0 \
-    -DgroupId=minjava.frameworks \
-    -DartifactId=helidon-mp-sample \
-    -Dpackage=minjava.frameworks.helidon.mp
-```
-
-run on port 8081
-
-
-#### build
-
-```
-mvn clean package
-java -jar target/helidon-mp-sample.jar
-```
-
-run at 3613 ms.
-zipped app jar size: 24.1MB (include hikariCP extension)
-
-NOTE: CDI拡張を抜いた場合
-
-run at 3160 ms.
-zipped app jar size: 21.5 MB.
-
-CDIの初期化がやはり重め。
 
 
 ## Micronaut
@@ -232,6 +164,75 @@ run at 0.012
 + graalVM version "19.1" -> "19.2"
 + docker build option, `-Dnative-image.docker-build=true` -> `-Dquarkus.native.container-build=true`
 
+
+## helidon
+
+### SE 
+
+v 1.3.0 -> v 1.4.0
+
+```bash
+mvn archetype:generate -DinteractiveMode=false \
+    -DarchetypeGroupId=io.helidon.archetypes \
+    -DarchetypeArtifactId=helidon-quickstart-se \
+    -DarchetypeVersion=1.4.0 \
+    -DgroupId=minjava.frameworks \
+    -DartifactId=helidon-se-sample \
+    -Dpackage=minjava.frameworks.helidon.se
+```
+
+run on port 8080
+
+
+#### build
+
+```
+mvn clean package
+java -jar target/helidon-se-sample.jar
+```
+
+run at 1236ms.
+
+all jar ziped size : 12.9 MB
+
+#### changes 1.4.0
+
+metrics -> metrics2.
+spinup 1100ms -> 1236ms
+
+### MP 
+
+v 1.3.0 -> 1.4.0
+
+```bash
+mvn archetype:generate -DinteractiveMode=false \
+    -DarchetypeGroupId=io.helidon.archetypes \
+    -DarchetypeArtifactId=helidon-quickstart-mp \
+    -DarchetypeVersion=1.4.0 \
+    -DgroupId=minjava.frameworks \
+    -DartifactId=helidon-mp-sample \
+    -Dpackage=minjava.frameworks.helidon.mp
+```
+
+run on port 8081
+
+
+#### build
+
+```
+mvn clean package
+java -jar target/helidon-mp-sample.jar
+```
+
+run at 3613 ms.
+zipped app jar size: 24.1MB (include hikariCP extension)
+
+NOTE: CDI拡張を抜いた場合
+
+run at 3160 ms.
+zipped app jar size: 21.5 MB.
+
+CDIの初期化がやはり重め。
 
 ## spring boot 2.2
 

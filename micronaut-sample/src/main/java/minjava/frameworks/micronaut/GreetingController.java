@@ -28,6 +28,7 @@ public class GreetingController {
     @Get("/greetings")
     public Greetings collectGreeting() {
         Greetings other =  client.collectGreetings();
+        System.out.println(other);
         return other.add(greeting());
 
     }

@@ -23,7 +23,7 @@ public class GreetingsResources {
     public CompletionStage<Greetings> collectGreeting() {
         Greeting my = new Greeting("quarkus", "this is quarkus service");
 
-        return client.fetchGreetingAsync()
-                .thenApply(other -> new Greetings(Arrays.asList(other, my)));
+        return client.fetchGreetingsAsync()
+                .thenApply(other -> other.add(my));
     }
 }

@@ -31,8 +31,10 @@ import io.helidon.common.CollectionsHelper;
 @ApplicationPath("/")
 public class GreetApplication extends Application {
 
+
     @Override
     public Set<Class<?>> getClasses() {
-        return CollectionsHelper.setOf(GreetingResource.class);
+        // META-INF/beans.xml の修正で component-scan も可能
+        return CollectionsHelper.setOf(GreetingResource.class, GreetingsResource.class);
     }
 }

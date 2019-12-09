@@ -12,15 +12,15 @@ import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 /**
  * RestClient, set url in application.properties
  */
-@Path("/greeting")
+@Path("/greetings")
 @RegisterRestClient
 public interface GreetingClient {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    Greeting fetchGreeting();
+    Greetings fetchGreetings();
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    CompletionStage<Greeting> fetchGreetingAsync();
+    CompletionStage<Greetings> fetchGreetingsAsync();
 }
