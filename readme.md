@@ -6,18 +6,19 @@ Java Frameworks
 + Helidon SE (run on 8082 port)
 + Helidon MP (run on 8083 port)
 
+## NOTICE
+
+書籍執筆時のソースコードは、BOOK_PUBLISHED タグの内容を参照してください。
+
 ## pre requirement
 
 + jdk 11 (11.0.5.hs-adpt )
-    + notice, compiler level set to jdk8
 + maven
 + gradle 
 
-
-
 ## Micronaut
 
-v 1.2.3 -> v1.2.6
+v 1.2.3 -> v1.2.6(BOOK) -> v1.3.1
 
 use micronaut-cli (mn) 
 
@@ -27,7 +28,7 @@ if use IDE, set annotation processor!
 mn create-app minjava.frameworks.micronaut.micronaut-sample
 ```
 
-run on port 8082
+run on port 8080
 
 ### build
 
@@ -45,8 +46,6 @@ oneJar size : 16.2 MB
 ```bash
 mn create-function minjava.frameworks.micronaut.micronaut-lambda-sample
 ```
-
-fix micronaut-aws version 1.3.3 for running AWS Lambda java 11 runtime.
 
 #### build
 
