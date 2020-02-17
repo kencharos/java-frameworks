@@ -24,7 +24,7 @@
     <parent>
         <groupId>io.helidon.applications</groupId>
         <artifactId>helidon-se</artifactId>
-        <version>1.4.0</version>
+        <version>1.4.1</version>
         <relativePath/>
     </parent>
     <groupId>minjava.frameworks</groupId>
@@ -34,6 +34,9 @@
 
     <properties>
         <mainClass>minjava.frameworks.helidon.se.Main</mainClass>
+        <maven.compiler.parameters>true</maven.compiler.parameters>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
     <dependencies>

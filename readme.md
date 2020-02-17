@@ -168,13 +168,13 @@ run at 0.012
 
 ### SE 
 
-v 1.3.0 -> v 1.4.0
+v 1.3.0 -> v 1.4.0(BOOK) -> v 1.4.1 (with Java11)
 
 ```bash
 mvn archetype:generate -DinteractiveMode=false \
     -DarchetypeGroupId=io.helidon.archetypes \
     -DarchetypeArtifactId=helidon-quickstart-se \
-    -DarchetypeVersion=1.4.0 \
+    -DarchetypeVersion=1.4.1 \
     -DgroupId=minjava.frameworks \
     -DartifactId=helidon-se-sample \
     -Dpackage=minjava.frameworks.helidon.se
@@ -201,13 +201,13 @@ spinup 1100ms -> 1236ms
 
 ### MP 
 
-v 1.3.0 -> 1.4.0
+v 1.3.0 -> v 1.4.0(BOOK) -> v 1.4.1  (with Java11)
 
 ```bash
 mvn archetype:generate -DinteractiveMode=false \
     -DarchetypeGroupId=io.helidon.archetypes \
     -DarchetypeArtifactId=helidon-quickstart-mp \
-    -DarchetypeVersion=1.4.0 \
+    -DarchetypeVersion=1.4.1 \
     -DgroupId=minjava.frameworks \
     -DartifactId=helidon-mp-sample \
     -Dpackage=minjava.frameworks.helidon.mp
