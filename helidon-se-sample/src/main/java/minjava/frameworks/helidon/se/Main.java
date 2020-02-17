@@ -73,7 +73,7 @@ public final class Main {
                            .config(config.get("server"))
                            .tracer(TracerBuilder.create(config.get("tracing")))
                            .build();
-        WebServer server = WebServer.create(serverConfig, createRouting(config));
+        var server = WebServer.create(serverConfig, createRouting(config));
 
         // Try to start the server. If successful, print some info and arrange to
         // print a message at shutdown. If unsuccessful, print the exception.
