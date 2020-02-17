@@ -43,7 +43,7 @@ public final class Main {
         setupLogging();
 
         // start the server
-        Server server = startServer();
+        var server = startServer();
 
         long fin = System.currentTimeMillis();
         System.out.println("http://localhost:" + server.port() + "/greeting startup at " + (fin-start) + " milli second "  );

@@ -1,10 +1,9 @@
 plugins {
-    id "com.github.johnrengelman.shadow" version "5.0.0"
+    id "com.github.johnrengelman.shadow" version "5.2.0"
     id "jp.classmethod.aws.lambda" version "0.39"
     id "net.ltgt.apt-eclipse" version "0.21"
     id "application"
 }
-
 
 
 version "0.1"
