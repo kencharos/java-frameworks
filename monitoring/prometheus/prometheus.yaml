@@ -9,16 +9,16 @@ scrape_configs:
   - job_name: 'helidon-se'
     metrics_path: /metrics
     static_configs:
-    - targets: ['host.docker.internal:8080']
+    - targets: ['host.docker.internal:8082']
   - job_name: 'helidon-mp'
     metrics_path: /metrics
     static_configs:
-    - targets: ['host.docker.internal:8081']
+    - targets: ['host.docker.internal:8083']
   - job_name: 'micronaut'
     metrics_path: /prometheus
     static_configs:
-    - targets: ['host.docker.internal:8082']
+    - targets: ['host.docker.internal:8080']
   - job_name: 'quakus'
     metrics_path: /metrics
     static_configs:
-    - targets: ['host.docker.internal:8083']
+    - targets: ['host.docker.internal:8081']
